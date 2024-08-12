@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // 导入 useNavigate
+import React, { useEffect } from 'react';
+// import { useNavigate } from 'react-router-dom'; // 导入 useNavigate
 
 const Chat: React.FC = () => {
-    const navigate = useNavigate(); // 初始化 navigate
+    // const navigate = useNavigate(); // 初始化 navigate
 
 
     const disableRefresh = () => {
