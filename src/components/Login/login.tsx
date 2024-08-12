@@ -19,6 +19,7 @@ const Login: React.FC = () => {
             // Prevent F5 or Ctrl+R (Windows/Linux) and Command+R (Mac) from refreshing the page
             if (
                 event.key === 'F5' ||
+                event.key === 'F12' ||
                 (event.ctrlKey && event.key === 'r') ||
                 (event.metaKey && event.key === 'r')
             ) {

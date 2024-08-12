@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // 导入 useNavigate
 
 const Chat: React.FC = () => {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
     const navigate = useNavigate(); // 初始化 navigate
 
 
@@ -12,6 +10,7 @@ const Chat: React.FC = () => {
             // Prevent F5 or Ctrl+R (Windows/Linux) and Command+R (Mac) from refreshing the page
             if (
                 event.key === 'F5' ||
+                event.key === 'F12' ||
                 (event.ctrlKey && event.key === 'r') ||
                 (event.metaKey && event.key === 'r')
             ) {
@@ -27,13 +26,9 @@ const Chat: React.FC = () => {
     useEffect(() => {
         disableRefresh();
 
-        // 禁用页面滚动
-        document.body.style.overflow = 'hidden';
+        document.title = 'Chat Page'; // Set the page title here
 
-        // 组件卸载时恢复滚动
-        return () => {
-            document.body.style.overflow = 'auto';
-        };
+
     }, []);
 
     return (
