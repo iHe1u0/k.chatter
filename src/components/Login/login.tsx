@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
-
+import { useNavigate } from 'react-router-dom'; // 导入 useNavigate
 
 const Login: React.FC = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    // const router = useRouter();
+    const navigate = useNavigate(); // 初始化 navigate
 
     const handleLogin = (e: React.FormEvent) => {
         e.preventDefault();
         // 这里可以添加登录逻辑，例如 API 请求
         console.log('Logging in with', username, password);
+        navigate('/chat'); // 根据你的需求替换 '/dashboard' 为目标路径
 
     };
 

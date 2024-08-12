@@ -22,7 +22,8 @@
         "title": "chatter",
         "width": 800,
         "height": 600,
-        "resizable": false
+        "resizable": false,
+        "theme": "Dark"
       }
     ],
     "security": {
