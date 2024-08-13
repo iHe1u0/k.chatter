@@ -1,0 +1,81 @@
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    border: 1px solid #ccc;
+}
+
+.messages-container {
+    flex: 1;
+    /* padding: 10px; */
+    border-bottom: 1px solid #ccc;
+    overflow-y: scroll;
+}
+
+/* Webkit 浏览器 (Chrome, Safari) 的滚动条样式 */
+.messages-container::-webkit-scrollbar {
+    /* 设置滚动条的宽度 */
+    width: 4px;
+}
+
+.messages-container::-webkit-scrollbar-track {
+    /* 滚动条轨道背景 */
+    background: transparent;
+}
+
+.messages-container::-webkit-scrollbar-thumb {
+    /* 滚动条的颜色 */
+    background: rgba(0, 0, 0, 0.1);
+    /* 滚动条的圆角 */
+    border-radius: 4px;
+}
+
+.messages-container::-webkit-scrollbar-thumb:hover {
+    /* 滚动条悬停时的颜色 */
+    background: white;
+}
+
+.message {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    word-break: break-all;
+}
+
+.message img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: 0 10px;
+}
+
+.message-content {
+    flex: 1;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.input-container {
+    display: flex;
+    border-top: 1px solid #ccc;
+    padding: 10px;
+}
+
+.input-container input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.input-container button {
+    margin-left: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+}

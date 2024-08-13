@@ -1,18 +1,39 @@
-import React, { useEffect } from 'react';
-// import { useNavigate } from 'react-router-dom'; // 导入 useNavigate
+import React, { useEffect, useRef, useState } from 'react';
+import './Chat.css'; // 导入 CSS 文件
 
 const Chat: React.FC = () => {
-    // const navigate = useNavigate(); // 初始化 navigate
+    const generateDefaultMessages = (count: number) =>
+        Array.from({ length: count }, (_, index) => ({
+            text: `Message ${index + 1}`,
+            sender: index % 2 === 0 ? 'me' : 'other'
+        }));
 
+    const defaultMessages = generateDefaultMessages(10);
+
+    const [messages, setMessages] = useState(defaultMessages);
+    const [input, setInput] = useState('');
+    const endOfMessagesRef = useRef<HTMLDivElement | null>(null);
+
+    const handleSend = () => {
+        if (input.trim()) {
+            setMessages([...messages, { text: input, sender: 'me' }]);
+            setInput('');
+        }
+    };
+
+    const scrollToBottom = () => {
+        endOfMessagesRef.current?.scrollIntoView({ behavior: 'smooth' });
+    };
 
     const disableRefresh = () => {
         document.addEventListener('keydown', function (event) {
-            // Prevent F5 or Ctrl+R (Windows/Linux) and Command+R (Mac) from refreshing the page
-            if (
+            if (event.key === 'Enter') {
+                handleSend();
+            } else if (
                 event.key === 'F5' ||
                 event.key === 'F12' ||
-                (event.ctrlKey && event.key === 'r') ||
-                (event.metaKey && event.key === 'r')
+                event.altKey ||
+                (event.ctrlKey && event.key === 'R')
             ) {
                 event.preventDefault();
             }
@@ -25,15 +46,40 @@ const Chat: React.FC = () => {
 
     useEffect(() => {
         disableRefresh();
-
-        document.title = 'Chat Page'; // Set the page title here
-
-
-    }, []);
+        document.title = 'Chat Page';
+        scrollToBottom();
+    }, [messages]);
 
     return (
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-            <text>Hello World</text>
+        <div className="chat-container">
+            <div className="messages-container">
+                {messages.map((msg, index) => (
+                    <div key={index} className="message">
+                        <img
+                            src={msg.sender === 'me' ? 'https://q2.qlogo.cn/headimg_dl?dst_uin=1310393537&spec=100' : 'https://cdn.oaistatic.com/_next/static/media/favicon-32x32.630a2b99.png'}
+                            alt={msg.sender}
+                        />
+                        <div className="message-content">
+                            {msg.text}
+                        </div>
+                    </div>
+                ))}
+                <div ref={endOfMessagesRef} />
+            </div>
+            <div className="input-container">
+                <input
+                    type="text"
+                    value={input}
+                    onChange={(e) => setInput(e.target.value)}
+                />
+                {input.trim() && (
+                    <button
+                        onClick={handleSend}
+                    >
+                        发送
+                    </button>
+                )}
+            </div>
         </div>
     );
 };

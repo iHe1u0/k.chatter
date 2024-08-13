@@ -93,6 +93,12 @@ button {
   outline: none;
 }
 
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent
+}
+
 #greet-input {
   margin-right: 5px;
 }
