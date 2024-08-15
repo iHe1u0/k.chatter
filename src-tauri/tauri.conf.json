@@ -15,15 +15,24 @@
       "shell": {
         "all": false,
         "open": true
+      },
+      "window": {
+        "all": false,
+        "close": true,
+        "hide": true,
+        "maximize": true,
+        "minimize": true,
+        "show": true,
+        "startDragging": true,
+        "unmaximize": true,
+        "unminimize": true
       }
     },
     "windows": [
       {
         "title": "chatter",
-        "width": 800,
-        "height": 600,
-        "resizable": false,
-        "theme": "Dark"
+        "decorations": false,
+        "transparent": true
       }
     ],
     "security": {

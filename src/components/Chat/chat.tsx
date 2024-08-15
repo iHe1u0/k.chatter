@@ -1,6 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './Chat.css'; // 导入 CSS 文件
 
+import { invoke } from '@tauri-apps/api/tauri';
+
+
 const Chat: React.FC = () => {
     const generateDefaultMessages = (count: number) =>
         Array.from({ length: count }, (_, index) => ({
@@ -17,6 +20,9 @@ const Chat: React.FC = () => {
     const handleSend = () => {
         if (input.trim()) {
             setMessages([...messages, { text: input, sender: 'me' }]);
+            invoke('post_msg', { msg: input }).then((response) => {
+                console.log(response);
+            });
             setInput('');
         }
     };
