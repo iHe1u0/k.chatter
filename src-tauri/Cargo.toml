@@ -1,6 +1,6 @@
 [package]
 name = "k-chatter"
-version = "0.0.0"
+version = "0.0.1"
 description = "A Tauri App"
 authors = ["kt.cc"]
 edition = "2021"
@@ -11,7 +11,19 @@ edition = "2021"
 tauri-build = { version = "1", features = [] }
 
 [dependencies]
-tauri = { version = "1", features = [ "window-unminimize", "window-close", "window-unmaximize", "window-start-dragging", "window-minimize", "window-maximize", "window-hide", "window-show", "shell-open"] }
+tauri = { version = "1", features = [ "dialog-all",
+    "window-unminimize",
+    "window-close",
+    "window-unmaximize",
+    "window-start-dragging",
+    "window-minimize",
+    "window-maximize",
+    "window-hide",
+    "window-show",
+    "shell-open",
+] }
+reqwest = { version = "0.12", features = ["json"] }
+tokio = { version = "1", features = ["full"] }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 
