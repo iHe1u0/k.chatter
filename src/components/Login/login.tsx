@@ -15,17 +15,15 @@ const Login: React.FC = () => {
     const handleLogin = (e: React.FormEvent) => {
         e.preventDefault();
         invoke('login', { account: account.trim(), password: password.trim() }).then(async (response) => {
-            console.log(response);
-            if (response == false) {
-                await message('登录失败', { title: '丸 辣', type: 'error' });
+            console.log("login>>>" + response);
+            if (response === "true") {
+                await message(response, { title: 'OK 辣', type: 'info' });
+                // navigate('/chat');
             }
             else {
-                await message('登录成功', { title: 'OK 辣', type: 'info' });
+                await message(response as string, { title: '丸 辣', type: 'error' });
             }
         });
-        if (false) {
-            navigate('/chat');
-        }
     };
 
     const disableRefresh = () => {
