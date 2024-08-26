@@ -17,11 +17,11 @@ const Login: React.FC = () => {
         invoke('login', { account: account.trim(), password: password.trim() }).then(async (response) => {
             console.log("login>>>" + response);
             if (response === "true") {
-                await message(response, { title: 'OK 辣', type: 'info' });
-                // navigate('/chat');
+                // await message(response, { title: "登录成功", type: 'info' });
+                navigate('/chat');
             }
             else {
-                await message(response as string, { title: '丸 辣', type: 'error' });
+                await message(response as string, { title: "丸 辣", type: 'error' });
             }
         });
     };

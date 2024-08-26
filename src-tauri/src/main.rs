@@ -11,6 +11,7 @@ fn post_msg(msg: &str) -> String {
     println!("{}", str);
     return str;
 }
+
 #[tauri::command]
 async fn login(account: &str, password: &str) -> Result<String, String> {
     // Check if account or password is empty
