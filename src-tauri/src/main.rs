@@ -12,6 +12,13 @@ fn post_msg(msg: &str) -> String {
     return str;
 }
 
+#[cfg(debug_assertions)]
+#[tauri::command]
+fn login() -> Result<String, String> {
+    return Ok("true".to_string());
+}
+
+#[cfg(not(debug_assertions))]
 #[tauri::command]
 async fn login(account: &str, password: &str) -> Result<String, String> {
     // Check if account or password is empty

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import './Chat.css'; // 导入 CSS 文件
+import './chat.css'; // 导入 CSS 文件
 
 import { invoke } from '@tauri-apps/api/tauri';
 
